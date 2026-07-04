@@ -1,0 +1,60 @@
+// ======================
+// SIMPAN LEADERBOARD
+// ======================
+
+function saveLeaderboard(name, score){
+
+    let data = JSON.parse(localStorage.getItem("leaderboard")) || [];
+
+    data.push({
+        name: name,
+        score: score,
+        date: new Date().toLocaleDateString()
+    });
+
+    // susun dari markah tertinggi
+    data.sort((a,b)=> b.score - a.score);
+
+    // simpan semula
+    localStorage.setItem("leaderboard", JSON.stringify(data));
+}
+
+// ======================
+// PAPAR LEADERBOARD
+// ======================
+
+document.getElementById("leaderboardBtn").onclick = function(){
+    showLeaderboard();
+};
+
+document.getElementById("closeLeaderboard").onclick = function(){
+    document.getElementById("leaderboardScreen").classList.add("hidden");
+};
+
+// fungsi papar
+function showLeaderboard(){
+
+    let data = JSON.parse(localStorage.getItem("leaderboard")) || [];
+
+    let body = document.getElementById("leaderboardBody");
+    body.innerHTML = "";
+
+    if(data.length === 0){
+        body.innerHTML = "<tr><td colspan='3'>Tiada data lagi</td></tr>";
+    }
+
+    data.forEach((item, index)=>{
+
+        let row = `
+            <tr>
+                <td>${index + 1}</td>
+                <td>${item.name}</td>
+                <td>${item.score}</td>
+            </tr>
+        `;
+
+        body.innerHTML += row;
+    });
+
+    document.getElementById("leaderboardScreen").classList.remove("hidden");
+}
