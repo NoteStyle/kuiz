@@ -1,0 +1,231 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Fredoka', sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg,#d7f9e9,#e3f2fd);
+}
+
+/* ======================
+SKRIN UTAMA
+====================== */
+
+#homeScreen{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.homeCard{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    width:90%;
+    max-width:500px;
+    box-shadow:0 10px 20px rgba(0,0,0,0.2);
+    animation:pop 0.5s ease;
+}
+
+.logo{
+    width:120px;
+}
+
+h1{
+    color:#2e7d32;
+    margin:10px 0;
+}
+
+.subtitle{
+    color:#555;
+    margin-bottom:15px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    border-radius:10px;
+    border:2px solid #ccc;
+    margin:10px 0;
+    font-size:16px;
+}
+
+/* ======================
+BUTTON
+====================== */
+
+button{
+    padding:12px 15px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+    margin:5px;
+    transition:0.3s;
+}
+
+#startBtn{
+    background:#4caf50;
+    color:white;
+}
+
+#instructionBtn{
+    background:#2196f3;
+    color:white;
+}
+
+#leaderboardBtn{
+    background:#ff9800;
+    color:white;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+/* ======================
+SKRIN ARAHAN
+====================== */
+
+.instructionCard{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    width:90%;
+    max-width:500px;
+    margin:50px auto;
+    box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* ======================
+GAME SCREEN
+====================== */
+
+header{
+    display:flex;
+    justify-content:space-around;
+    background:#2e7d32;
+    color:white;
+    padding:15px;
+    font-size:16px;
+    flex-wrap:wrap;
+}
+
+.bins{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin:20px;
+}
+
+.bin{
+    background:white;
+    padding:10px;
+    border-radius:15px;
+    width:120px;
+    text-align:center;
+    box-shadow:0 5px 10px rgba(0,0,0,0.2);
+    transition:0.3s;
+}
+
+.bin:hover{
+    transform:translateY(-5px);
+}
+
+.bin img{
+    width:80px;
+}
+
+/* ======================
+SISA SAMPAH
+====================== */
+
+#trashContainer{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px;
+    margin-top:20px;
+}
+
+.trash{
+    width:100px;
+    background:white;
+    padding:10px;
+    border-radius:10px;
+    cursor:grab;
+    box-shadow:0 5px 10px rgba(0,0,0,0.2);
+    transition:0.2s;
+}
+
+.trash img{
+    width:70px;
+}
+
+.trash:active{
+    transform:scale(1.1);
+}
+
+/* ======================
+FINISH SCREEN
+====================== */
+
+.finishCard{
+    background:white;
+    padding:30px;
+    text-align:center;
+    border-radius:20px;
+    width:90%;
+    max-width:400px;
+    margin:50px auto;
+    box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+#finalScore{
+    font-size:40px;
+    color:#4caf50;
+}
+
+/* ======================
+LEADERBOARD
+====================== */
+
+.leaderCard{
+    background:white;
+    padding:20px;
+    border-radius:20px;
+    width:90%;
+    max-width:500px;
+    margin:50px auto;
+    text-align:center;
+    box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+table{
+    width:100%;
+    margin-top:15px;
+    border-collapse:collapse;
+}
+
+th, td{
+    padding:10px;
+    border-bottom:1px solid #ddd;
+}
+
+.hidden{
+    display:none;
+}
+
+/* ======================
+ANIMASI
+====================== */
+
+@keyframes pop{
+    from{transform:scale(0.8); opacity:0;}
+    to{transform:scale(1); opacity:1;}
+}
