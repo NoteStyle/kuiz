@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Jom Asingkan Sampah</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- =======================
+MENU UTAMA
+======================= -->
+
+<section id="homeScreen">
+
+<div class="homeCard">
+
+<img src="images/logo.png" class="logo">
+
+<h1>♻️ JOM ASINGKAN SAMPAH ♻️</h1>
+
+<p class="subtitle">
+
+Kenali jenis sisa dan asingkan ke dalam tong yang betul.
+
+</p>
+
+<input
+type="text"
+id="playerName"
+placeholder="Masukkan Nama Anda">
+
+<div class="menuButton">
+
+<button id="startBtn">
+
+🚀 MULA PERMAINAN
+
+</button>
+
+<button id="instructionBtn">
+
+📖 CARA BERMAIN
+
+</button>
+
+<button id="leaderboardBtn">
+
+🏆 PAPAN KEDUDUKAN
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =======================
+PAPARAN ARAHAN
+======================= -->
+
+<section id="instructionScreen" class="hidden">
+
+<div class="instructionCard">
+
+<h2>Cara Bermain</h2>
+
+<ol>
+
+<li>Masukkan nama anda.</li>
+
+<li>Klik Mula Permainan.</li>
+
+<li>Seret gambar sisa ke tong yang betul.</li>
+
+<li>Setiap jawapan betul mendapat 5 markah.</li>
+
+<li>Jawapan salah akan mengurangkan nyawa.</li>
+
+<li>Habiskan sebelum masa tamat.</li>
+
+<li>Markah akan direkodkan.</li>
+
+<li>Sijil akan dijana secara automatik.</li>
+
+</ol>
+
+<button id="backHome">
+
+⬅ Kembali
+
+</button>
+
+</div>
+
+</section>
+
+<!-- =======================
+PERMAINAN
+======================= -->
+
+<section id="gameScreen" class="hidden">
+
+<header>
+
+<div>
+
+👤 Nama :
+
+<span id="displayName"></span>
+
+</div>
+
+<div>
+
+⭐ Markah :
+
+<span id="score">
+
+0
+
+</span>
+
+</div>
+
+<div>
+
+❤️ Nyawa :
+
+<span id="life">
+
+3
+
+</span>
+
+</div>
+
+<div>
+
+⏰ Masa :
+
+<span id="timer">
+
+60
+
+</span>
+
+</div>
+
+</header>
+
+<!-- Tong -->
+
+<div class="bins">
+
+<div class="bin" data-type="paper">
+
+<img src="images/tong-biru.png">
+
+<p>Kertas</p>
+
+</div>
+
+<div class="bin" data-type="plastic">
+
+<img src="images/tong-hijau.png">
+
+<p>Plastik</p>
+
+</div>
+
+<div class="bin" data-type="glass">
+
+<img src="images/tong-perang.png">
+
+<p>Kaca</p>
+
+</div>
+
+<div class="bin" data-type="metal">
+
+<img src="images/tong-jingga.png">
+
+<p>Logam</p>
+
+</div>
+
+<div class="bin" data-type="general">
+
+<img src="images/tong-kelabu.png">
+
+<p>Sisa Am</p>
+
+</div>
+
+</div>
+
+<!-- Sampah -->
+
+<div id="trashContainer">
+
+<!-- script.js akan jana gambar -->
+
+</div>
+
+</section>
+
+<!-- =======================
+TAMAT
+======================= -->
+
+<section id="finishScreen" class="hidden">
+
+<div class="finishCard">
+
+<h1>
+
+🎉 Tahniah 🎉
+
+</h1>
+
+<h2 id="finalPlayer"></h2>
+
+<p>
+
+Markah Anda
+
+</p>
+
+<h1 id="finalScore">
+
+100
+
+</h1>
+
+<button id="certificateBtn">
+
+📜 Lihat Sijil
+
+</button>
+
+<button id="playAgainBtn">
+
+🔄 Main Semula
+
+</button>
+
+</div>
+
+</section>
+
+<!-- =======================
+LEADERBOARD
+======================= -->
+
+<section id="leaderboardScreen" class="hidden">
+
+<div class="leaderCard">
+
+<h1>
+
+🏆 PAPAN KEDUDUKAN
+
+</h1>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Kedudukan</th>
+
+<th>Nama</th>
+
+<th>Markah</th>
+
+</tr>
+
+</thead>
+
+<tbody id="leaderboardBody">
+
+</tbody>
+
+</table>
+
+<button id="closeLeaderboard">
+
+⬅ Tutup
+
+</button>
+
+</div>
+
+</section>
+
+<!-- =======================
+AUDIO
+======================= -->
+
+<audio id="correctSound">
+
+<source src="sound/correct.mp3">
+
+</audio>
+
+<audio id="wrongSound">
+
+<source src="sound/wrong.mp3">
+
+</audio>
+
+<audio id="clapSound">
+
+<source src="sound/applause.mp3">
+
+</audio>
+
+<!-- =======================
+SCRIPT
+======================= -->
+
+<script src="leaderboard.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+
+</html><!DOCTYPE html>
+<html lang="ms">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Jom Asingkan Sampah</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- =======================
+MENU UTAMA
+======================= -->
+
+<section id="homeScreen">
+
+<div class="homeCard">
+
+<img src="images/logo.png" class="logo">
+
+<h1>♻️ JOM ASINGKAN SAMPAH ♻️</h1>
+
+<p class="subtitle">
+
+Kenali jenis sisa dan asingkan ke dalam tong yang betul.
+
+</p>
+
+<input
+type="text"
+id="playerName"
+placeholder="Masukkan Nama Anda">
+
+<div class="menuButton">
+
+<button id="startBtn">
+
+🚀 MULA PERMAINAN
+
+</button>
+
+<button id="instructionBtn">
+
+📖 CARA BERMAIN
+
+</button>
+
+<button id="leaderboardBtn">
+
+🏆 PAPAN KEDUDUKAN
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =======================
+PAPARAN ARAHAN
+======================= -->
+
+<section id="instructionScreen" class="hidden">
+
+<div class="instructionCard">
+
+<h2>Cara Bermain</h2>
+
+<ol>
+
+<li>Masukkan nama anda.</li>
+
+<li>Klik Mula Permainan.</li>
+
+<li>Seret gambar sisa ke tong yang betul.</li>
+
+<li>Setiap jawapan betul mendapat 5 markah.</li>
+
+<li>Jawapan salah akan mengurangkan nyawa.</li>
+
+<li>Habiskan sebelum masa tamat.</li>
+
+<li>Markah akan direkodkan.</li>
+
+<li>Sijil akan dijana secara automatik.</li>
+
+</ol>
+
+<button id="backHome">
+
+⬅ Kembali
+
+</button>
+
+</div>
+
+</section>
+
+<!-- =======================
+PERMAINAN
+======================= -->
+
+<section id="gameScreen" class="hidden">
+
+<header>
+
+<div>
+
+👤 Nama :
+
+<span id="displayName"></span>
+
+</div>
+
+<div>
+
+⭐ Markah :
+
+<span id="score">
+
+0
+
+</span>
+
+</div>
+
+<div>
+
+❤️ Nyawa :
+
+<span id="life">
+
+3
+
+</span>
+
+</div>
+
+<div>
+
+⏰ Masa :
+
+<span id="timer">
+
+60
+
+</span>
+
+</div>
+
+</header>
+
+<!-- Tong -->
+
+<div class="bins">
+
+<div class="bin" data-type="paper">
+
+<img src="images/tong-biru.png">
+
+<p>Kertas</p>
+
+</div>
+
+<div class="bin" data-type="plastic">
+
+<img src="images/tong-hijau.png">
+
+<p>Plastik</p>
+
+</div>
+
+<div class="bin" data-type="glass">
+
+<img src="images/tong-perang.png">
+
+<p>Kaca</p>
+
+</div>
+
+<div class="bin" data-type="metal">
+
+<img src="images/tong-jingga.png">
+
+<p>Logam</p>
+
+</div>
+
+<div class="bin" data-type="general">
+
+<img src="images/tong-kelabu.png">
+
+<p>Sisa Am</p>
+
+</div>
+
+</div>
+
+<!-- Sampah -->
+
+<div id="trashContainer">
+
+<!-- script.js akan jana gambar -->
+
+</div>
+
+</section>
+
+<!-- =======================
+TAMAT
+======================= -->
+
+<section id="finishScreen" class="hidden">
+
+<div class="finishCard">
+
+<h1>
+
+🎉 Tahniah 🎉
+
+</h1>
+
+<h2 id="finalPlayer"></h2>
+
+<p>
+
+Markah Anda
+
+</p>
+
+<h1 id="finalScore">
+
+100
+
+</h1>
+
+<button id="certificateBtn">
+
+📜 Lihat Sijil
+
+</button>
+
+<button id="playAgainBtn">
+
+🔄 Main Semula
+
+</button>
+
+</div>
+
+</section>
+
+<!-- =======================
+LEADERBOARD
+======================= -->
+
+<section id="leaderboardScreen" class="hidden">
+
+<div class="leaderCard">
+
+<h1>
+
+🏆 PAPAN KEDUDUKAN
+
+</h1>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Kedudukan</th>
+
+<th>Nama</th>
+
+<th>Markah</th>
+
+</tr>
+
+</thead>
+
+<tbody id="leaderboardBody">
+
+</tbody>
+
+</table>
+
+<button id="closeLeaderboard">
+
+⬅ Tutup
+
+</button>
+
+</div>
+
+</section>
+
+<!-- =======================
+AUDIO
+======================= -->
+
+<audio id="correctSound">
+
+<source src="sound/correct.mp3">
+
+</audio>
+
+<audio id="wrongSound">
+
+<source src="sound/wrong.mp3">
+
+</audio>
+
+<audio id="clapSound">
+
+<source src="sound/applause.mp3">
+
+</audio>
+
+<!-- =======================
+SCRIPT
+======================= -->
+
+<script src="leaderboard.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
